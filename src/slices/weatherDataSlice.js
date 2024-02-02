@@ -9,13 +9,17 @@ const initialState = {
     max_temp: null,
     humidity: null,
     wind_speed: null,
+    wind_direction: null,
     weather_desc: null,
     weather_icon: null,
+    country: "IN",
     city: "lucknow",
     unit: "metric",
     error: null,
-    fiveDayForecastArr: []
+    forecastArr: []
 }
+
+
 
 export const weatherData = createAsyncThunk(
     "weather/wetherData",
@@ -38,6 +42,17 @@ export const fiveDayForecast = createAsyncThunk(
 const weatherDataSlice = createSlice({
     name: "weather",
     initialState,
+    reducers: {
+        getCity: (state, action) => {
+            state.city = action.payload
+        },
+        getUnit: (state, action) => {
+            state.unit = action.payload
+        },
+        setErrorNull: (state) => {
+            state.error = null
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(weatherData.pending, (state) => {
@@ -46,8 +61,9 @@ const weatherDataSlice = createSlice({
             .addCase(weatherData.fulfilled, (state, action) => {
                 const {
                     main: { temp, temp_min, temp_max, humidity },
-                    wind: { speed },
                     weather: [{ description, icon }],
+                    wind: {speed, deg},
+                    sys: {country}
                 } = action.payload;
 
                 state.curr_temp = temp;
@@ -55,8 +71,10 @@ const weatherDataSlice = createSlice({
                 state.max_temp = temp_max;
                 state.humidity = humidity;
                 state.wind_speed = speed;
+                state.wind_direction = deg;
                 state.weather_desc = description;
                 state.weather_icon = icon;
+                state.country = country
                 state.error = null;
             })
             .addCase(weatherData.rejected, (state, action) => {
@@ -72,7 +90,7 @@ const weatherDataSlice = createSlice({
                     return currentDate !== nextDate;
                 });
 
-                state.fiveDayForecastArr = filteredForecast;
+                state.forecastArr = filteredForecast;
                 state.error = null;
             })
             .addCase(fiveDayForecast.rejected, (state, action) => {
@@ -80,5 +98,7 @@ const weatherDataSlice = createSlice({
             });
     }
 })
+
+export const {getCity, getUnit, setErrorNull} = weatherDataSlice.actions;
 
 export default weatherDataSlice.reducer;
