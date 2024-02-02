@@ -1,0 +1,6 @@
+@import "./navbar/navbar.css";
+@import "./searchBox/searchBox.css";
+@import "./currentWeather/currentWeather.css";
+@import "./fiveDayforecast/forecast.css";
+@import "./fiveForecastList/forecastList.css";
+@import "./errorBox/errorBox.css";
