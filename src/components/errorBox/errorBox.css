@@ -44,21 +44,11 @@
     line-height: 1.5rem;
 }
 
-.error-btn {
-    background-color: var(--dark-gray);
-    padding: 10px 30px;
-    border-style: none; 
-    outline: none;
-    color: var(--white);
-    font-size: 14px;
-}
-
 @media(max-width: 1060px){
 
     .container{
         text-align: center;
         display: block;
-        /* margin: 50px 10px; */
     }
     .error-img {
         width: 60%;
