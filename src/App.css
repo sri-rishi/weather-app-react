@@ -1,0 +1,101 @@
+@import "./components/index.css";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding:0;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --dark-gray: #333333;
+    --light-gray: #4F4F4F;
+    --white: #fff;
+    --orange: #FC6736;
+    --light-orange: #fc7a4e;
+    --blue: #0C2D57;
+    --shadow-color: rgba(62, 61, 61, 0.2);
+    --light-shadow-color: rgba(0, 0, 0, 0.2);
+    --gray-color: rgb(146, 139, 139);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+  
+h1, p {
+    margin-block-start: 0;
+    margin-block-end: 0; 
+}
+  
+ul {
+    list-style: none;
+}
+  
+  
+img {
+    width: 100%;
+    object-fit: cover;
+}
+  
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 1rem;
+    background: url("./assets/images/weather-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.weather-section-1 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.weather-section-2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+@media only screen and (min-width: 700px) {
+    .main {
+        flex-direction: row;
+    }
+
+    .weather-section-1 {
+        width: 50%;
+    }
+
+    .weather-section-2 {
+        width: 50%;
+    }
+}
+
